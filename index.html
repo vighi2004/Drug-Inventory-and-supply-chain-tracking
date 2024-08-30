@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24/7 Meds Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            background-color: #f8f9fa;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+            z-index: 1000;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .menu-btn {
+            cursor: pointer;
+            padding-left: 0%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navbar with Search -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="#">24/7 Meds</a>
+        <div class="d-flex ml-auto">
+            <div class="menu-btn navbar-brand">
+                <span class="navbar-toggler-icon"></span>
+            </div>
+            <form class="form-inline ml-2" role="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Vertical Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <nav class="nav flex-column p-3">
+            <a class="nav-link active" href="#" onclick="navigate('homepage')">Home</a>
+            <a class="nav-link" href="#" onclick="navigate('suppliers')">Suppliers</a>
+            <a class="nav-link" href="#" onclick="navigate('inventory')">Inventory</a>
+            <a class="nav-link" href="#" onclick="navigate('reports')">Reports</a>
+            <a class="nav-link" href="#" onclick="navigate('login')">Login</a>
+            <a class="nav-link" href="#" onclick="navigate('signup')">Signup</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container mt-3" id="content">
+        <!-- Content will be loaded here -->
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts.js"></script>
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
