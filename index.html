@@ -2,96 +2,309 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24/7 Meds Dashboard</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 200px;
-            background-color: #f8f9fa;
-            transition: transform 0.3s ease;
-            transform: translateX(-100%);
-            z-index: 1000;
-        }
-
-        .sidebar.active {
-            transform: translateX(0);
-        }
-
-        .menu-btn {
-            cursor: pointer;
-            padding-left: 0%;
-        }
-    </style>
+    <title>Pharmacurlt Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <!-- Top Navbar with Search -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <a class="navbar-brand" href="#">24/7 Meds</a>
-        <div class="d-flex ml-auto">
-            <div class="menu-btn navbar-brand">
-                <span class="navbar-toggler-icon"></span>
-            </div>
-            <form class="form-inline ml-2" role="search">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
+    
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h4>Pharmacult</h4>
         </div>
-    </nav>
-
-    <!-- Vertical Sidebar Navigation -->
-    <div class="sidebar" id="sidebar">
-        <nav class="nav flex-column p-3">
-            <a class="nav-link active" href="#" onclick="navigate('homepage')">Home</a>
-            <a class="nav-link" href="#" onclick="navigate('suppliers')">Suppliers</a>
-            <a class="nav-link" href="#" onclick="navigate('inventory')">Inventory</a>
-            <a class="nav-link" href="#" onclick="navigate('reports')">Reports</a>
-            <a class="nav-link" href="#" onclick="navigate('login')">Login</a>
-            <a class="nav-link" href="#" onclick="navigate('signup')">Signup</a>
-        </nav>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Purchase</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Product</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Reports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Stock</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Customer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Manufacturer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Employee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Settings</a>
+            </li>
+        </ul>
     </div>
 
-    <!-- Main Content Area -->
-    <div class="container mt-3" id="content">
-        <!-- Content will be loaded here -->
-        <div class="row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card">
+    
+    <div class="main-content">
+    
+        <div class="navbar">
+            <input type="text" class="form-control search-bar" placeholder="Search...">
+            <button class="btn btn-primary" id="search-button">Search</button>
+            <button class="btn btn-primary" id="login-button">Login</button>
+            <button class="btn btn-primary" id="signup-button">Sign Up</button>
+        </div>
+
+        
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="card-title">
+                            <i class="fas fa-users"></i> Total Customers
+                        </div>
+                        <div class="card-text">0</div>
+                        <button class="btn btn-light mt-2" id="show-details-customers">Show Details</button>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="card">
+            <div class="col-md-3">
+                <div class="card text-white bg-success mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="card-title">
+                            <i class="fas fa-shopping-cart"></i> Total Sales
+                        </div>
+                        <div class="card-text">-</div>
+                        <button class="btn btn-light mt-2" id="show-details-sales">Show Details</button>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning mb-3">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <i class="fas fa-dollar-sign"></i> Total Profit
+                        </div>
+                        <div class="card-text">0</div>
+                        <button class="btn btn-light mt-2" id="show-details-profit">Show Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-danger mb-3">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <i class="fas fa-box-open"></i> Out of Stock
+                        </div>
+                        <div class="card-text">0</div>
+                        <button class="btn btn-light mt-2" id="show-details-stock">Show Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="row">
+            
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Expiring List
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Medicine Name</th>
+                                    <th>Expire Date</th>
+                                    <th>Quantity</th>
+                                    <th>Chart</th>
+                                    <th>Return</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Doxycycline</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><i class="fas fa-chart-line"></i></td>
+                                    <td><i class="fas fa-undo"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Abetis</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><i class="fas fa-chart-line"></i></td>
+                                    <td><i class="fas fa-undo"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Diasulin 10ml</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><i class="fas fa-chart-line"></i></td>
+                                    <td><i class="fas fa-undo"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Cerox CV</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><i class="fas fa-chart-line"></i></td>
+                                    <td><i class="fas fa-undo"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Fluclox</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><i class="fas fa-chart-line"></i></td>
+                                    <td><i class="fas fa-undo"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Recent Orders
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Medicine Name</th>
+                                    <th>Batch No</th>
+                                    <th>Quantity</th>
+                                    <th>Status</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Paricel 15mg</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-success">none</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Abetis 20mg</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-warning">none</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Cerox CV</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-danger">none</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Abetis 20mg</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-success">none</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Cerox CV</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-danger">none</span></td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Progress and Today's Report (Additional content can be added here as per the design) -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Monthly Progress</div>
+                    <div class="card-body">
+                        <!-- Add chart or progress details here -->
+                        <button class="btn btn-primary mt-2" id="show-details-progress">Show Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Today's Report</div>
+                    <div class="card-body">
+                        <!-- Add report details here -->
+                        <button class="btn btn-primary mt-2" id="show-details-report">Show Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" class="form-control" id="login-username" placeholder="Enter your username">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" class="form-control" id="login-password" placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signup-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-username">Username</label>
+                            <input type="text" class="form-control" id="signup-username" placeholder="Enter your username">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" class="form-control" id="signup-password" placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Custom JS -->
-    <script src="scripts.js"></script>
-    <script>
-        document.querySelector('.menu-btn').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-        });
-    </script>
+    <script src="script1.js"></script>
 </body>
 </html>
-
